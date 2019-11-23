@@ -40,6 +40,7 @@ export class Aplication {
 
     private Routers(): void {
         this.app.use(express.static(path.join(__dirname, 'public')));
+        this.app.use('/uploads', express.static(path.resolve('uploads')))
         this.app.use(indexRouter);
         this.app.use('/api', apiRouter)
     }

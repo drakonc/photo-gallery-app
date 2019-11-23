@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { ApiControllers } from '../Controllers/api.Controller';
+import multer from '../libs/multer';
 
 class ApiRouter {
 
@@ -11,7 +12,9 @@ class ApiRouter {
     }
 
     private config() {
-        this.router.get('/', this.apiController.index);
+        this.router.route('/photos')
+            .get(this.apiController.getPhotos)
+            .post(multer.single('image'), this.apiController.createPhoto)
     }
 
 }
