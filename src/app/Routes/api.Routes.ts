@@ -14,7 +14,12 @@ class ApiRouter {
     private config() {
         this.router.route('/photos')
             .get(this.apiController.getPhotos)
-            .post(multer.single('image'), this.apiController.createPhoto)
+            .post(multer.single('image'), this.apiController.createPhoto);
+
+        this.router.route('/photos/:id')
+            .get(this.apiController.getPhoto)
+            .delete(this.apiController.deletePhoto)
+            .put(this.apiController.updatePhoto);
     }
 
 }
